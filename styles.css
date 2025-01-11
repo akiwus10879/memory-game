@@ -1,0 +1,105 @@
+/* General styling for the game */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #333; /* Default dark background */
+    color: #fff; /* Light text color for dark mode */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.game-container {
+    text-align: center;
+    width: 400px;
+    padding: 20px;
+    background-color: #444; /* Darker background for the container */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Sequence box styling */
+.sequence-box {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center;     /* Vertically center the content */
+    margin-bottom: 20px;
+    height: 100px;
+    width: 100%;             /* Take full width */
+    opacity: 1;
+    transition: opacity 0.5s;
+    background-color: #555; /* Darker background for sequence box */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Overlay for the sequence box */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Same height as the sequence box */
+    background-color: rgba(0, 0, 0, 0.7); /* Black with transparency */
+    display: none; /* Hidden by default */
+    z-index: 10; /* Ensures it covers the sequence box */
+}
+
+/* Color box styling (interactable area for color blocks) */
+.color-box {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: no-wrap;  /* Ensure the color blocks stay in one row */
+    flex-direction: row; /* Explicitly set direction to row for horizontal layout */
+    align-items: center; /* Vertically align color blocks */
+}
+
+/* Color block styling */
+.color-block {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.color-block:hover {
+    transform: scale(1.1);
+}
+
+/* Buttons styling */
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 5px;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #aaa;
+}
+
+/* Score styling */
+.info p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
