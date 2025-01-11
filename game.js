@@ -6,17 +6,33 @@ const sequenceBox = document.getElementById("sequence-box");
 const colorBox = document.getElementById("color-box");
 const scoreElement = document.getElementById("score");
 const overlay = document.getElementById("overlay"); // The black overlay
+const highScoreElement = document.getElementById("high-score"); // High score element
 
 const colorOptions = ["red", "blue", "green", "yellow", "purple", "orange"];
 let sequence = [];
 let playerSequence = [];
 let score = 0;
 
+// Retrieve the saved high score from localStorage (if it exists)
+let highScore = localStorage.getItem("highScore") || 0;
+highScoreElement.textContent = highScore;
+
 // Start the game
 startButton.addEventListener("click", startGame);
 
 // Start Over game
 startOverButton.addEventListener("click", startOver);
+
+// Function to update the high score
+function updateHighScore() {
+    if (score > highScore) {
+        highScore = score;
+        highScoreElement.textContent = highScore;
+
+        // Save the new high score to localStorage
+        localStorage.setItem("highScore", highScore);
+    }
+}
 
 // Function to start the game
 function startGame() {
@@ -113,6 +129,10 @@ function handlePlayerClick(event) {
         // Check if the sequence matches
         if (playerSequence[playerSequence.length - 1] !== sequence[playerSequence.length - 1]) {
             alert("Game Over! Your score: " + score);
+
+            // Update the high score
+            updateHighScore();
+
             startOver(); // Restart the game after game over
             return;
         }
@@ -123,7 +143,6 @@ function handlePlayerClick(event) {
             scoreElement.textContent = score;
             colorBox.removeEventListener("click", handlePlayerClick);
             setTimeout(() => {
-                // Make the sequence box visible again for the next round
                 sequenceBox.style.display = "block"; // Show the sequence box again
                 overlay.style.display = "none"; // Hide the overlay again
                 nextRound();
